@@ -7,7 +7,9 @@ RUN    mkdir /var/log/skyline \
     && mkdir /var/run/skyline \
     && mkdir /var/log/redis
 
-RUN apt-get install -y python-setuptools python-dev
+RUN    apt-get update \
+    && apt-get install -y python-setuptools python-dev \
+    && apt-get clean
 RUN easy_install pip
 
 #Need sudo as a NOOP
@@ -29,7 +31,7 @@ RUN pip install numpy
 #scipy requires universe
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list \
     && apt-get update \
-    && apt-get install -y python-scipy
+    && apt-get install -y python-scipy \
     && apt-get clean
 
 RUN pip install pandas
