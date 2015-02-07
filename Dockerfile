@@ -8,7 +8,7 @@ RUN    mkdir /var/log/skyline \
     && mkdir /var/log/redis
 
 RUN    apt-get update \
-    && apt-get install -y python-setuptools python-dev \
+    && apt-get install -y git python-setuptools python-dev \
     && apt-get clean
 RUN easy_install pip
 
