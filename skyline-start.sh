@@ -1,6 +1,6 @@
 #!/bin/bash
 
-redis-server redis.conf
+redis-server redis.conf --port 12335
 ./horizon.d start
 ./analyzer.d start
 ./webapp.d start
