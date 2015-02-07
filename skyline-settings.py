@@ -34,7 +34,7 @@ MINI_DURATION = 3600
 
 # If you have a Graphite host set up, set this metric to get graphs on
 # Skyline and Horizon. Include http://.
-GRAPHITE_HOST = 'http://your_graphite_host.com'
+GRAPHITE_HOST = 'http://localhost:8000'
 
 # If you have Oculus set up, set this metric to set the clickthrough
 # on the webapp. Include http://.
