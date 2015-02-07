@@ -1,36 +1,36 @@
-
-FROM carver/git
+FROM ubuntu
 
 MAINTAINER Jason Carver <ut96caarrs@snkmail.com>
 
 #The command order is intended to optimize for least-likely to change first, to speed up builds
-RUN mkdir /var/log/skyline
-RUN mkdir /var/run/skyline
-RUN mkdir /var/log/redis
+RUN    mkdir /var/log/skyline \
+    && mkdir /var/run/skyline \
+    && mkdir /var/log/redis
 
-RUN apt-get install -y python-setuptools
+RUN apt-get install -y python-setuptools python-dev
 RUN easy_install pip
 
 #Need sudo as a NOOP
 RUN apt-get install -y sudo
 
 #Redis
-RUN apt-get install -y wget
-RUN wget http://download.redis.io/releases/redis-2.6.16.tar.gz
-RUN tar --extract --gzip --directory /opt --file redis-2.6.16.tar.gz
-RUN apt-get install -y gcc build-essential
-RUN cd /opt/redis-2.6.16 && make
+RUN    apt-get install -y wget \
+    && wget http://download.redis.io/releases/redis-2.6.16.tar.gz \
+    && tar --extract --gzip --directory /opt --file redis-2.6.16.tar.gz \
+    && apt-get install -y gcc build-essential \
+    && cd /opt/redis-2.6.16 \
+    && make
 
 ENV PATH $PATH:/opt/redis-2.6.16/src
 
 #numpy needs python build tools
-RUN apt-get install -y python-dev
 RUN pip install numpy
 
 #scipy requires universe
-RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
-RUN apt-get update
-RUN apt-get install -y python-scipy
+RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list \
+    && apt-get update \
+    && apt-get install -y python-scipy
+    && apt-get clean
 
 RUN pip install pandas
 RUN pip install patsy
