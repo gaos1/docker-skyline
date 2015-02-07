@@ -30,8 +30,7 @@ ENV PATH $PATH:/opt/redis-2.6.16/src
 RUN pip install numpy
 
 #scipy requires universe
-RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list \
-    && apt-get update \
+RUN apt-get update \
     && apt-get install -y python-scipy \
     && apt-get clean
 
