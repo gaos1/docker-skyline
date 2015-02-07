@@ -5,7 +5,8 @@ MAINTAINER Jason Carver <ut96caarrs@snkmail.com>
 #The command order is intended to optimize for least-likely to change first, to speed up builds
 RUN    mkdir /var/log/skyline \
     && mkdir /var/run/skyline \
-    && mkdir /var/log/redis
+    && mkdir /var/log/redis \
+    && mkdir /var/dump
 
 RUN    apt-get update \
     && apt-get install -y git python-setuptools python-dev \
