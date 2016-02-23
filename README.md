@@ -14,11 +14,18 @@ Build and run with:
     docker build -t="carver/skyline" .
     
     # run
-    docker run -d carver/skyline
+    docker run -d  -p :1500:1500 -p :2024:2025/udp carver/skyline
     
     # behold
     curl localhost:1500
 
+    ## workaround when missing graphite:
+    docker exec -i -t xxxxxx bash
+    vi /opt/skyline/src/settings.py
+    remove localhost for graphite
+    kill analyzer and restart it
+    cd /opt/skyline/bin
+    ./analyzer.d start
 
 If you want to show the log output at the terminal when running, omit the -d, like:
 
