@@ -60,3 +60,5 @@ EXPOSE :1500
 
 #graphite collection port
 EXPOSE :2024
+
+EXPOSE :2025
