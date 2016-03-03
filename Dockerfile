@@ -1,5 +1,8 @@
 
-FROM carver/git
+FROM ubuntu:14.04.4
+
+RUN sudo apt-get update
+RUN sudo apt-get install -y git
 
 MAINTAINER Jason Carver <ut96caarrs@snkmail.com>
 
