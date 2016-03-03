@@ -14,7 +14,7 @@ Build and run with:
     docker build -t="carver/skyline" .
     
     # run
-    docker run -d  -p :1500:1500 -p :2025:2025/udp carver/skyline
+    docker run --name skyline -d  -p :1500:1500 -p :2025:2025/udp carver/skyline
     
     # behold
     curl localhost:1500
