@@ -10,6 +10,8 @@ MAINTAINER Jason Carver <ut96caarrs@snkmail.com>
 RUN mkdir /var/log/skyline
 RUN mkdir /var/run/skyline
 RUN mkdir /var/log/redis
+RUN sudo mkdir -p /var/dump
+RUN sudo chmod a+w /var/dump
 
 RUN apt-get install -y python-setuptools
 RUN easy_install pip
@@ -40,7 +42,7 @@ RUN pip install patsy
 RUN pip install statsmodels
 RUN pip install msgpack-python
 
-RUN git clone https://github.com/etsy/skyline.git /opt/skyline
+RUN git clone https://github.com/gaos1/skyline.git /opt/skyline
 
 RUN pip install -r /opt/skyline/requirements.txt
 
